@@ -65,6 +65,10 @@ class TrendingVideos extends Component {
     </div>
   )
 
+  onRetry = () => {
+    this.getTrendingMovies()
+  }
+
   renderVideosView = () => {
     const {trendingVideos} = this.state
     return (

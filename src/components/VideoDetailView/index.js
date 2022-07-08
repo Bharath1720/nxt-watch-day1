@@ -18,6 +18,8 @@ class VideoDetailView extends Component {
   state = {
     apiStatus: apiStatusConstants.initial,
     videoDetails: [],
+    isLiked: false,
+    isDisLiked: false,
   }
 
   componentDidMount() {
@@ -62,7 +64,25 @@ class VideoDetailView extends Component {
     }
   }
 
-  renderFailureView = () => <FailureView />
+  clickLiked = () => {
+    this.setState(prevState => ({
+      isLiked: !prevState.isLiked,
+      isDisLiked: false,
+    }))
+  }
+
+  clickDisLiked = () => {
+    this.setState(prevState => ({
+      isDisLiked: !prevState.isDisLiked,
+      isLiked: false,
+    }))
+  }
+
+  onRetry = () => {
+    this.getVideoDetails()
+  }
+
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
 
   renderLoadingView = () => (
     <div className="loader-container">
@@ -71,11 +91,17 @@ class VideoDetailView extends Component {
   )
 
   renderPlayVideoView = () => {
-    const {videoDetails} = this.state
+    const {videoDetails, isLiked, isDisLiked} = this.state
     return (
       <>
         {/* <p className="json">{JSON.stringify(videoDetails)}</p> */}
-        <PlayVideoView videoDetails={videoDetails} />
+        <PlayVideoView
+          clickLiked={this.clickLiked}
+          clickDisLiked={this.clickDisLiked}
+          isLiked={isLiked}
+          isDisLiked={isDisLiked}
+          videoDetails={videoDetails}
+        />
       </>
     )
   }

@@ -34,7 +34,7 @@ class Home extends Component {
     })
     const {searchInput} = this.state
     const jwtToken = Cookies.get('jwt_token')
-    const apiUrl = `https://apis.ccbp.in/videos/all?search=`
+    const apiUrl = `https://apis.ccbp.in/videos/all?search=${searchInput}`
     const options = {
       method: 'GET',
       headers: {
@@ -45,7 +45,7 @@ class Home extends Component {
     const response = await fetch(apiUrl, options)
     if (response.ok === true) {
       const data = await response.json()
-      console.log(data)
+      //  console.log(data)
       const updatedData = data.videos.map(each => ({
         id: each.id,
         title: each.title,
@@ -55,7 +55,7 @@ class Home extends Component {
         name: each.channel.name,
         profileImageUrl: each.channel.profile_image_url,
       }))
-      console.log(updatedData)
+      //  console.log(updatedData)
       this.setState({
         homeVideos: updatedData,
         apiStatus: apiStatusConstants.success,
@@ -65,6 +65,10 @@ class Home extends Component {
         apiStatus: apiStatusConstants.failure,
       })
     }
+  }
+
+  getSearchResults = () => {
+    this.getHomeVideos()
   }
 
   onCloseBanner = () => {
@@ -77,9 +81,11 @@ class Home extends Component {
     })
   }
 
-  onRetry = () => {}
+  onRetry = () => {
+    this.setState({searchInput: ''}, this.getVideos)
+  }
 
-  renderFailureView = () => <FailureView />
+  renderFailureView = () => <FailureView onRetry={this.onRetry} />
 
   renderLoadingView = () => (
     <div className="loader-container">
@@ -92,7 +98,7 @@ class Home extends Component {
     return (
       <>
         {/* <p className="json">{JSON.stringify(homeVideos)}</p> */}
-        <HomeVideos homeVideos={homeVideos} />
+        <HomeVideos homeVideos={homeVideos} onRetry={this.onRetry} />
       </>
     )
   }
@@ -160,7 +166,12 @@ class Home extends Component {
               placeholder="search"
               color="'#f9f9f9"
             />
-            <button type="button" className="search-icon-container">
+            <button
+              onClick={this.getSearchResults}
+              data-testid="searchButton"
+              type="button"
+              className="search-icon-container"
+            >
               <AiOutlineSearch size={20} />
             </button>
           </div>

@@ -57,3 +57,114 @@
     display: none;
   }
 }
+.log-out-btn {
+  border: 1px solid;
+  font-family: 'Roboto';
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  border-radius: 5px;
+  background-color: #231f20;
+  color: #ffffff;
+  border-color: #ffffff;
+  margin-left: 6px;
+}
+
+@media screen and (max-width: 768px) {
+  .log-out-btn {
+    display: none;
+  }
+}
+.modal-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 150px;
+  width: 250px;
+  background-color: #cbd5e1;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-container {
+    height: 200px;
+    width: 400px;
+  }
+}
+.modal-desc {
+  font-family: 'Roboto';
+  font-size: 15px;
+  margin: 10px;
+  color: black;
+  text-align: center;
+}
+
+@media screen and (min-width: 768px) {
+  .modal-desc {
+    font-size: 20px;
+  }
+}
+.buttons-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.close-button {
+  background-color: transparent;
+  border: 1px solid grey;
+  padding: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+  color: grey;
+  margin: 12px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+@media screen and (min-width: 768px) {
+  .close-button {
+    font-size: 15px;
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+.confirm-button {
+  align-self: flex-end;
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px;
+  padding-right: 12px;
+  padding-left: 12px;
+  border: 1px solid #3b82f6;
+  margin: 10px;
+  outline: none;
+  cursor: pointer;
+  border-radius: 6px;
+  font-family: Roboto;
+  font-weight: bold;
+  font-size: 12px;
+}
+@media screen and (min-width: 768px) {
+  .confirm-button {
+    font-size: 15px;
+    padding: 13px;
+    padding-right: 20px;
+    padding-left: 20px;
+  }
+}
+.logout-icon-button {
+  background: none;
+  border: none;
+}
+@media screen and (min-width: 768px) {
+  .logout-icon-button {
+    display: none;
+  }
+}

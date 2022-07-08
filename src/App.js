@@ -7,15 +7,16 @@ import GamingVideos from './components/GamingVideos'
 import SavedVideos from './components/SavedVideos'
 import NotFound from './components/NotFound'
 import VideoDetailView from './components/VideoDetailView'
+import ProtectedRoute from './components/ProtectedRoute'
 
 const App = () => (
   <Switch>
     <Route exact path="/login" component={Login} />
-    <Route exact path="/" component={Home} />
-    <Route exact path="/trending" component={TrendingVideos} />
-    <Route exact path="/gaming" component={GamingVideos} />
-    <Route exact path="/videos/:id" component={VideoDetailView} />
-    <Route exact path="/saved-videos" component={SavedVideos} />
+    <ProtectedRoute exact path="/" component={Home} />
+    <ProtectedRoute exact path="/trending" component={TrendingVideos} />
+    <ProtectedRoute exact path="/gaming" component={GamingVideos} />
+    <ProtectedRoute exact path="/videos/:id" component={VideoDetailView} />
+    <ProtectedRoute exact path="/saved-videos" component={SavedVideos} />
     <Route path="/not-found" component={NotFound} />
     <Redirect to="not-found" />
   </Switch>

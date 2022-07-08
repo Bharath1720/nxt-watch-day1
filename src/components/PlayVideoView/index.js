@@ -4,7 +4,7 @@ import {BiListPlus} from 'react-icons/bi'
 import './index.css'
 
 const PlayVideoView = props => {
-  const {videoDetails} = props
+  const {videoDetails, clickLiked, clickDisLiked} = props
   const {
     title,
     videoUrl,
@@ -16,6 +16,14 @@ const PlayVideoView = props => {
     // thumbnailUrl,
     subscriberCount,
   } = videoDetails[0]
+
+  const onClickLike = () => {
+    clickLiked()
+  }
+
+  const onClickDislike = () => {
+    clickDisLiked()
+  }
 
   return (
     <div className="video-player">
@@ -30,13 +38,17 @@ const PlayVideoView = props => {
         </p>
         <div className="play-social-buttons-container">
           <div className="btn-container">
-            <button className="social-btn" type="button">
+            <button onClick={onClickLike} className="social-btn" type="button">
               <AiOutlineLike size={25} />
               <span className="btn-txt">Like</span>
             </button>
           </div>
           <div className="btn-container">
-            <button className="social-btn" type="button">
+            <button
+              onClick={onClickDislike}
+              className="social-btn"
+              type="button"
+            >
               <AiOutlineDislike size={25} />
               <span className="btn-txt">Dislike</span>
             </button>
