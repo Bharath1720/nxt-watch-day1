@@ -29,6 +29,9 @@ class Home extends Component {
   }
 
   getHomeVideos = async () => {
+    this.setState({
+      apiStatus: apiStatusConstants.inProgress,
+    })
     const {searchInput} = this.state
     const jwtToken = Cookies.get('jwt_token')
     const apiUrl = `https://apis.ccbp.in/videos/all?search=`

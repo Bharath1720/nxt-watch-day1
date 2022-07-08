@@ -1,0 +1,16 @@
+.gaming-video-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
+  margin: 0px;
+  padding: 0px;
+  flex-wrap: wrap;
+}
+
+/* .trending-video-list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+} */

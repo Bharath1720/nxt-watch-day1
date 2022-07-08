@@ -1,0 +1,13 @@
+.video-details-view-container {
+  min-height: 100vh;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  overflow-y: auto;
+  background-color: #0f0f0f;
+}
+@media screen and (min-width: 768px) {
+  .video-details-view-container {
+    margin-left: 250px;
+    margin-bottom: 0px;
+  }
+}

@@ -1,9 +1,11 @@
 import './index.css'
+import {Link} from 'react-router-dom'
 import {formatDistanceToNow} from 'date-fns'
 
 const HomeVideoCard = props => {
   const {video} = props
   const {
+    id,
     title,
     thumbnailUrl,
     viewCount,
@@ -23,29 +25,31 @@ const HomeVideoCard = props => {
   //  console.log(tillDate)
   return (
     <div>
-      <li className="list-item">
-        <img
-          className="thumb-nail-image"
-          src={thumbnailUrl}
-          alt="video thumbnail"
-        />
-        <div className="video-details">
+      <Link className="nav-link" to={`/videos/${id}`}>
+        <li className="list-item">
           <img
-            className="profile-image"
-            src={profileImageUrl}
-            alt="channel logo"
+            className="thumb-nail-image"
+            src={thumbnailUrl}
+            alt="video thumbnail"
           />
-          <div className="content-section">
-            <p className="title-color">{title}</p>
-            <p className="channel-name">{name}</p>
-            <p className="views-and-date">
-              {viewCount} views
-              <span className="dot">.</span>
-              <span>{tillDate}</span>
-            </p>
+          <div className="video-details">
+            <img
+              className="profile-image"
+              src={profileImageUrl}
+              alt="channel logo"
+            />
+            <div className="content-section">
+              <p className="title-color">{title}</p>
+              <p className="channel-name">{name}</p>
+              <p className="views-and-date">
+                {viewCount} views
+                <span className="dot">.</span>
+                <span>{tillDate}</span>
+              </p>
+            </div>
           </div>
-        </div>
-      </li>
+        </li>
+      </Link>
     </div>
   )
 }
